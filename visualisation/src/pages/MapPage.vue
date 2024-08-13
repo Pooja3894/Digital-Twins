@@ -19,8 +19,8 @@
       </label>
     </div>
     <MapViewer
-      :init-lat="kaiapoi.latitude"
-      :init-long="kaiapoi.longitude"
+      :init-lat="otakaro.latitude"
+      :init-long="otakaro.longitude"
       :init-height="8000"
       :cesium-access-token="env.cesiumApiToken"
       :data-sources="dataSources"
@@ -61,9 +61,9 @@ type ParameterOption = { name: string } & (RangeOption | DataOption)
 usePageTitlePrefix("Map");
 
 // Start location
-const kaiapoi = {
-  latitude: -43.380881,
-  longitude: 172.655714
+const otakaro = {
+  latitude: -43.517580,
+  longitude:  172.677106,
 };
 
 // Drop down menu options for selecting parameters
