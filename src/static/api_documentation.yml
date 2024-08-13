@@ -241,12 +241,12 @@ components:
               scenarioOptions:
                 type: object
                 properties:
-                  "Projected Year":
+                  "projectedYear":
                     type: number
                     minimum: 2023
                     maximum: 2300
                     example: 2025
-                  "SSP Scenario":
+                  "sspScenario":
                     type: string
                     example: SSP1-1.9
                     enum:
@@ -255,13 +255,13 @@ components:
                       - 'SSP2-4.5'
                       - 'SSP3-7.0'
                       - 'SSP5-8.5'
-                  "Confidence Level":
+                  "confidenceLevel":
                     type: string
                     example: medium
                     enum:
                       - low
                       - medium
-                  "Add Vertical Land Movement":
+                  "addVerticalLandMovement":
                     type: boolean
                     example: true
 

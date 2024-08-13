@@ -1,20 +1,20 @@
 <template>
   <!-- The page that shows the map for the Digital Twin -->
   <div class="full-height">
-    <div v-for="column of selectionOptions" :key="column.name">
+    <div v-for="(modelParamOptions, key) of allModelParameterOptions" :key="key">
       <label>
-        {{ column.name }}
-        <select v-if="column.data" v-model="selectedOption[column.name]">
-          <option v-for="option of column.data" :value="option" :key="option">
+        {{ modelParamOptions.name }}
+        <select v-if="modelParamOptions.data" v-model="selectedParameters[key]">
+          <option v-for="option of modelParamOptions.data" :value="option" :key="option">
             {{ option }}
           </option>
         </select>
         <input
-          v-if="column.min && column.max"
+          v-else
           type="number"
-          v-model.number="selectedOption[column.name]"
-          :min="column.min"
-          :max="column.max"
+          v-model.number="selectedParameters[key]"
+          :min="modelParamOptions.min"
+          :max="modelParamOptions.max"
         >
       </label>
     </div>
@@ -25,7 +25,7 @@
       :cesium-access-token="env.cesiumApiToken"
       :data-sources="dataSources"
       :scenarios="scenarios"
-      :scenario-options="selectedOption"
+      :scenario-options="selectedParameters"
       @task-posted="onTaskPosted"
       @task-completed="onTaskCompleted"
       @task-failed="onTaskFailed"
@@ -50,12 +50,12 @@ interface DataOption {
 }
 
 interface RangeOption {
-  min: number;
-  max: number;
+  min?: number;
+  max?: number;
   data?: never;
 }
 
-type SelectionOption = { name: string } & (RangeOption | DataOption)
+type ParameterOption = { name: string } & (RangeOption | DataOption)
 
 // Add page title prefix to webpage title
 usePageTitlePrefix("Map");
@@ -67,8 +67,8 @@ const kaiapoi = {
 };
 
 // Drop down menu options for selecting parameters
-const selectionOptions = {
-  year: {
+const allModelParameterOptions = {
+  projectedYear: {
     name: "Projected Year",
     min: 2023,
     max: 2300
@@ -85,7 +85,7 @@ const selectionOptions = {
     name: "Add Vertical Land Movement",
     data: ["true", "false"]
   }
-} as Record<string, SelectionOption>;
+} as Record<string, ParameterOption>;
 
 // Environment variables
 const env = {
@@ -104,11 +104,11 @@ const dataSources = ref<MapViewerDataSourceOptions>({});
 const scenarios = ref<Scenario[]>([]);
 
 // Default selected options for parameters
-const selectedOption = reactive<Record<string, number | string>>({
-  "Projected Year": 2050,
-  "SSP Scenario": 'SSP2-4.5',
-  "Confidence Level": "medium",
-  "Add Vertical Land Movement": "true"
+const selectedParameters = reactive<Record<string, number | string>>({
+  projectedYear: 2050,
+  sspScenario: 'SSP2-4.5',
+  confidenceLevel: "medium",
+  addVerticalLandMovement: "true"
 });
 
 

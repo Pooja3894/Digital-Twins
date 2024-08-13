@@ -158,9 +158,9 @@ def generate_tide_inputs(selected_polygon_wkt: str, scenario_options: dict) -> N
         Options for scenario modelling inputs.
     """
     parameters = DEFAULT_MODULES_TO_PARAMETERS[main_tide_slr]
-    parameters["proj_year"] = scenario_options["Projected Year"]
-    parameters["add_vlm"] = scenario_options["Add Vertical Land Movement"]
-    parameters["confidence_level"] = scenario_options["Confidence Level"]
+    parameters["proj_year"] = scenario_options["projectedYear"]
+    parameters["add_vlm"] = scenario_options["addVerticalLandMovement"]
+    parameters["confidence_level"] = scenario_options["confidenceLevel"]
     selected_polygon = wkt_to_gdf(selected_polygon_wkt)
     main_tide_slr.main(selected_polygon, **parameters)
 
