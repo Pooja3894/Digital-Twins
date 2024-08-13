@@ -68,22 +68,22 @@ const kaiapoi = {
 
 // Drop down menu options for selecting parameters
 const allModelParameterOptions = {
-  projectedYear: {
-    name: "Projected Year",
-    min: 2023,
-    max: 2300
+  antecedentDryDays: {
+    name: "Antecedent Dry Days",
+    min: 0,
   },
-  sspScenario: {
-    name: "SSP Scenario",
-    data: ['SSP1-1.9', 'SSP1-2.6', 'SSP2-4.5', 'SSP3-7.0', 'SSP5-8.5']
+  averageRainIntensity: {
+    name: "Average Rain Intensity",
+    min: 0,
   },
-  confidenceLevel: {
-    name: "Confidence Level",
-    data: ['low', 'medium']
+  eventDuration: {
+    name: "Event Duration",
+    min: 0,
   },
-  addVerticalLandMovement: {
-    name: "Add Vertical Land Movement",
-    data: ["true", "false"]
+  rainfallPh: {
+    name: "Rainfall pH",
+    min: 0,
+    max: 14
   }
 } as Record<string, ParameterOption>;
 
@@ -105,10 +105,10 @@ const scenarios = ref<Scenario[]>([]);
 
 // Default selected options for parameters
 const selectedParameters = reactive<Record<string, number | string>>({
-  projectedYear: 2050,
-  sspScenario: 'SSP2-4.5',
-  confidenceLevel: "medium",
-  addVerticalLandMovement: "true"
+  antecedentDryDays: 13,
+  averageRainIntensity: 12,
+  eventDuration: 10,
+  rainfallPh: 12,
 });
 
 
