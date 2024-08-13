@@ -3,7 +3,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <router-link class="navbar-brand" :to="{name: 'Map'}">
-        Flood Resilience Digital Twin
+        Ōtākaro Digital Twin
       </router-link>
       <button class="navbar-toggler"
               type="button"

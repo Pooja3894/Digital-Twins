@@ -1,9 +1,9 @@
 <template>
   <!-- Page displaying About information. Context of the web app, license, source code, etc. -->
   <div class="container-fluid">
-    <h3>Flood Resilience Digital Twin (FReDT)</h3>
+    <h3>Ōtākaro Digital Twin</h3>
     <p>
-      This web application visualises and provides controls to the Digital Twin for Flood Resilience in New Zealand.
+      This web application visualises and provides controls to the Ōtākaro Digital Twin.
     </p>
     <p>&nbsp;</p>
     <hr>

@@ -1,7 +1,7 @@
 // Composable to append title of a component to the base title of the app and makes this the document title.
 
 /** The base title of the application, displayed in the document title */
-export const appBaseTitle = "Flood Resilience Digital Twin (FReDT)";
+export const appBaseTitle = "Ōtākaro Digital Twin";
 
 import {onMounted} from "vue";
 
