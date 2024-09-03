@@ -1,49 +1,56 @@
 /* The basic style sheet for the entire app */
 input[type="number"] {
-    max-width: 80%;
+  max-width: 80%;
 }
 
 div.outer {
-    position: fixed;
-    top: 41px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    padding: 0;
+  position: fixed;
+  top: 41px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  padding: 0;
 }
 
 /* Customize fonts */
-body, label, input, button, select {
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    font-weight: 200;
+body,
+label,
+input,
+button,
+select {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 200;
 }
 
-h1, h2, h3, h4 {
-    font-weight: 400;
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
 }
 
 #controls {
-    /* Appearance */
-    background-color: white;
-    padding: 0 20px 20px 20px;
-    cursor: move;
-    /* Fade out while not hovering */
-    opacity: 0.4;
-    zoom: 0.9;
-    transition: opacity 300ms 500ms;
+  /* Appearance */
+  background-color: white;
+  padding: 0 20px 20px 20px;
+  cursor: move;
+  /* Fade out while not hovering */
+  opacity: 0.4;
+  zoom: 0.9;
+  transition: opacity 300ms 500ms;
 }
 
 #controls:hover {
-    /* Fade in while hovering */
-    opacity: 0.95;
-    transition-delay: 0s;
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0s;
 }
 
 /* Position and style citation */
 #cite {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-size: 12px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px;
 }
