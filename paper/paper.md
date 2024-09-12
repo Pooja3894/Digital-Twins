@@ -24,6 +24,10 @@ authors:
   - name: Xander Cai
     orcid: 0009-0008-9995-9778
     affiliation: 1
+  
+  - name: Martin Nguyen
+    orcid: 0000-0003-4469-0149
+    affiliation: 1
 
   - name: Matthew Wilson
     orcid: 0000-0001-9459-6981
@@ -41,6 +45,7 @@ authors:
     affiliation: 4
   
   - name: Emily Lane
+    orcid: 0000-0002-9261-6640
     affiliation: 3
     
 affiliations:
@@ -53,7 +58,7 @@ affiliations:
   - name: Land Information New Zealand | Toitū Te Whenua, New Zealand
     index: 4
 
-date: 22 April 2024
+date: 23 August 2024
 bibliography: paper.bib
 ---
 

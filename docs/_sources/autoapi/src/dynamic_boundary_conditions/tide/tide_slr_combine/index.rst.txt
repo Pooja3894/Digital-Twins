@@ -23,7 +23,6 @@ Functions
 
 .. autoapisummary::
 
-   src.dynamic_boundary_conditions.tide.tide_slr_combine.split_slr_measurementname_column
    src.dynamic_boundary_conditions.tide.tide_slr_combine.get_slr_scenario_data
    src.dynamic_boundary_conditions.tide.tide_slr_combine.get_interpolated_slr_scenario_data
    src.dynamic_boundary_conditions.tide.tide_slr_combine.add_slr_to_tide
@@ -34,18 +33,6 @@ Module Contents
 ---------------
 
 .. py:data:: log
-
-.. py:function:: split_slr_measurementname_column(slr_data: geopandas.GeoDataFrame) -> geopandas.GeoDataFrame
-
-   Split the 'measurementname' column in the sea level rise data to extract and add additional information.
-
-   :param slr_data: A GeoDataFrame containing the sea level rise data.
-   :type slr_data: gpd.GeoDataFrame
-
-   :returns: A GeoDataFrame containing the sea level rise data with additional columns for extracted information:
-             'confidence_level', 'ssp_scenario', and 'add_vlm'.
-   :rtype: gpd.GeoDataFrame
-
 
 .. py:function:: get_slr_scenario_data(slr_data: geopandas.GeoDataFrame, confidence_level: str, ssp_scenario: str, add_vlm: bool, percentile: int) -> geopandas.GeoDataFrame
 
@@ -97,8 +84,8 @@ Module Contents
 
 .. py:function:: add_slr_to_tide(tide_data: geopandas.GeoDataFrame, slr_interp_scenario: geopandas.GeoDataFrame, proj_year: int) -> pandas.DataFrame
 
-   Adds sea level rise (SLR) data to the tide data for a specific projection year and
-   returns the combined tide and sea level rise value.
+   Add sea level rise (SLR) data to the tide data for a specific projection year and
+   return the combined tide and sea level rise value.
 
    :param tide_data: A GeoDataFrame containing tide data with added time information (seconds, minutes, hours) and location details.
    :type tide_data: gpd.GeoDataFrame
@@ -110,10 +97,12 @@ Module Contents
    :returns: A DataFrame that contains the combined tide and sea level rise data for the specified projection year.
    :rtype: pd.DataFrame
 
+   :raises ValueError: If an invalid 'proj_year' value is provided.
+
 
 .. py:function:: get_combined_tide_slr_data(tide_data: geopandas.GeoDataFrame, slr_data: geopandas.GeoDataFrame, proj_year: int, confidence_level: str, ssp_scenario: str, add_vlm: bool, percentile: int, increment_year: int = 1, interp_method: str = 'linear') -> pandas.DataFrame
 
-   Generates the combined tide and sea level rise (SLR) data for a specific projection year, considering the given
+   Generate the combined tide and sea level rise (SLR) data for a specific projection year, considering the given
    confidence_level, ssp_scenario, add_vlm, percentile, and more.
 
    :param tide_data: A GeoDataFrame containing tide data with added time information (seconds, minutes, hours) and location details.

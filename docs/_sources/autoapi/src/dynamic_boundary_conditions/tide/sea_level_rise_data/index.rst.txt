@@ -24,8 +24,8 @@ Functions
 
 .. autoapisummary::
 
-   src.dynamic_boundary_conditions.tide.sea_level_rise_data.download_slr_data_files_from_takiwa
-   src.dynamic_boundary_conditions.tide.sea_level_rise_data.read_slr_data_from_files
+   src.dynamic_boundary_conditions.tide.sea_level_rise_data.modify_slr_data_from_takiwa
+   src.dynamic_boundary_conditions.tide.sea_level_rise_data.get_slr_data_from_takiwa
    src.dynamic_boundary_conditions.tide.sea_level_rise_data.store_slr_data_to_db
    src.dynamic_boundary_conditions.tide.sea_level_rise_data.get_closest_slr_data
    src.dynamic_boundary_conditions.tide.sea_level_rise_data.get_slr_data_from_db
@@ -36,28 +36,23 @@ Module Contents
 
 .. py:data:: log
 
-.. py:function:: download_slr_data_files_from_takiwa(slr_data_dir: pathlib.Path) -> None
+.. py:function:: modify_slr_data_from_takiwa(slr_nz_dict: Dict[str, pandas.DataFrame]) -> geopandas.GeoDataFrame
 
-   Download regional sea level rise (SLR) data files from the NZ SeaRise Takiwa website.
+   Modify sea level rise data stored under dictionary to a GeoDataFrame and return.
 
-   :param slr_data_dir: The directory where the downloaded sea level rise data files will be saved.
-   :type slr_data_dir: pathlib.Path
-
-   :returns: This function does not return any value.
-   :rtype: None
-
-
-.. py:function:: read_slr_data_from_files(slr_data_dir: pathlib.Path) -> geopandas.GeoDataFrame
-
-   Read sea level rise data from the NZ Sea level rise datasets and return a GeoDataFrame.
-
-   :param slr_data_dir: The directory containing the downloaded sea level rise data files.
-   :type slr_data_dir: pathlib.Path
+   :param slr_nz_dict: A dictionary containing the sea level rise data from the NZ Sea level rise datasets.
+   :type slr_nz_dict: Dict[str, pd.DataFrame]
 
    :returns: A GeoDataFrame containing the sea level rise data from the NZ Sea level rise datasets.
    :rtype: gpd.GeoDataFrame
 
-   :raises FileNotFoundError: If the sea level rise data directory does not exist or if there are no CSV files in the specified directory.
+
+.. py:function:: get_slr_data_from_takiwa() -> geopandas.GeoDataFrame
+
+   Fetch sea level rise data from the NZ SeaRise Takiwa website.
+
+   :returns: A GeoDataFrame containing the sea level rise data from the NZ Sea level rise datasets.
+   :rtype: gpd.GeoDataFrame
 
 
 .. py:function:: store_slr_data_to_db(engine: sqlalchemy.engine.Engine) -> None
@@ -66,9 +61,6 @@ Module Contents
 
    :param engine: The engine used to connect to the database.
    :type engine: Engine
-
-   :returns: This function does not return any value.
-   :rtype: None
 
 
 .. py:function:: get_closest_slr_data(engine: sqlalchemy.engine.Engine, single_query_loc: pandas.Series) -> geopandas.GeoDataFrame

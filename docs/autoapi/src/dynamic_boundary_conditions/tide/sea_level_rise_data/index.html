@@ -111,11 +111,11 @@ in the provided tide data.</p>
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.sea_level_rise_data.download_slr_data_files_from_takiwa" title="src.dynamic_boundary_conditions.tide.sea_level_rise_data.download_slr_data_files_from_takiwa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_slr_data_files_from_takiwa</span></code></a>(→ None)</p></td>
-<td><p>Download regional sea level rise (SLR) data files from the NZ SeaRise Takiwa website.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.sea_level_rise_data.modify_slr_data_from_takiwa" title="src.dynamic_boundary_conditions.tide.sea_level_rise_data.modify_slr_data_from_takiwa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modify_slr_data_from_takiwa</span></code></a>(→ geopandas.GeoDataFrame)</p></td>
+<td><p>Modify sea level rise data stored under dictionary to a GeoDataFrame and return.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.sea_level_rise_data.read_slr_data_from_files" title="src.dynamic_boundary_conditions.tide.sea_level_rise_data.read_slr_data_from_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_slr_data_from_files</span></code></a>(→ geopandas.GeoDataFrame)</p></td>
-<td><p>Read sea level rise data from the NZ Sea level rise datasets and return a GeoDataFrame.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.sea_level_rise_data.get_slr_data_from_takiwa" title="src.dynamic_boundary_conditions.tide.sea_level_rise_data.get_slr_data_from_takiwa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_slr_data_from_takiwa</span></code></a>(→ geopandas.GeoDataFrame)</p></td>
+<td><p>Fetch sea level rise data from the NZ SeaRise Takiwa website.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.sea_level_rise_data.store_slr_data_to_db" title="src.dynamic_boundary_conditions.tide.sea_level_rise_data.store_slr_data_to_db"><code class="xref py py-obj docutils literal notranslate"><span class="pre">store_slr_data_to_db</span></code></a>(→ None)</p></td>
 <td><p>Store sea level rise data to the database.</p></td>
@@ -137,29 +137,12 @@ in the provided tide data.</p>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="src.dynamic_boundary_conditions.tide.sea_level_rise_data.download_slr_data_files_from_takiwa">
-<span class="sig-prename descclassname"><span class="pre">src.dynamic_boundary_conditions.tide.sea_level_rise_data.</span></span><span class="sig-name descname"><span class="pre">download_slr_data_files_from_takiwa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slr_data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.dynamic_boundary_conditions.tide.sea_level_rise_data.download_slr_data_files_from_takiwa" title="Link to this definition"></a></dt>
-<dd><p>Download regional sea level rise (SLR) data files from the NZ SeaRise Takiwa website.</p>
+<dt class="sig sig-object py" id="src.dynamic_boundary_conditions.tide.sea_level_rise_data.modify_slr_data_from_takiwa">
+<span class="sig-prename descclassname"><span class="pre">src.dynamic_boundary_conditions.tide.sea_level_rise_data.</span></span><span class="sig-name descname"><span class="pre">modify_slr_data_from_takiwa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slr_nz_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.GeoDataFrame</span></span></span><a class="headerlink" href="#src.dynamic_boundary_conditions.tide.sea_level_rise_data.modify_slr_data_from_takiwa" title="Link to this definition"></a></dt>
+<dd><p>Modify sea level rise data stored under dictionary to a GeoDataFrame and return.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>slr_data_dir</strong> (<em>pathlib.Path</em>) – The directory where the downloaded sea level rise data files will be saved.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>This function does not return any value.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.dynamic_boundary_conditions.tide.sea_level_rise_data.read_slr_data_from_files">
-<span class="sig-prename descclassname"><span class="pre">src.dynamic_boundary_conditions.tide.sea_level_rise_data.</span></span><span class="sig-name descname"><span class="pre">read_slr_data_from_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slr_data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.GeoDataFrame</span></span></span><a class="headerlink" href="#src.dynamic_boundary_conditions.tide.sea_level_rise_data.read_slr_data_from_files" title="Link to this definition"></a></dt>
-<dd><p>Read sea level rise data from the NZ Sea level rise datasets and return a GeoDataFrame.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>slr_data_dir</strong> (<em>pathlib.Path</em>) – The directory containing the downloaded sea level rise data files.</p>
+<dd class="field-odd"><p><strong>slr_nz_dict</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – A dictionary containing the sea level rise data from the NZ Sea level rise datasets.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A GeoDataFrame containing the sea level rise data from the NZ Sea level rise datasets.</p>
@@ -167,8 +150,19 @@ in the provided tide data.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>gpd.GeoDataFrame</p>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>FileNotFoundError</strong> – If the sea level rise data directory does not exist or if there are no CSV files in the specified directory.</p>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.dynamic_boundary_conditions.tide.sea_level_rise_data.get_slr_data_from_takiwa">
+<span class="sig-prename descclassname"><span class="pre">src.dynamic_boundary_conditions.tide.sea_level_rise_data.</span></span><span class="sig-name descname"><span class="pre">get_slr_data_from_takiwa</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.GeoDataFrame</span></span></span><a class="headerlink" href="#src.dynamic_boundary_conditions.tide.sea_level_rise_data.get_slr_data_from_takiwa" title="Link to this definition"></a></dt>
+<dd><p>Fetch sea level rise data from the NZ SeaRise Takiwa website.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A GeoDataFrame containing the sea level rise data from the NZ Sea level rise datasets.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>gpd.GeoDataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -180,12 +174,6 @@ in the provided tide data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>engine</strong> (<em>Engine</em>) – The engine used to connect to the database.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>This function does not return any value.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>

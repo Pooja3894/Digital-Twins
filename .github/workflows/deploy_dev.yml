@@ -1,0 +1,11 @@
+name: Dummy workflow to enable testing in another branch
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3

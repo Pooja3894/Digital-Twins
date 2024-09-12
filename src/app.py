@@ -284,6 +284,48 @@ def get_depth_at_point(task_id: str) -> Response:
     }), OK)
 
 
+@app.route('/scenarios/medusa/<int:scenario_id>', methods=["GET"])
+@check_celery_alive
+def get_rainfall_information(scenario_id: int) -> Response:
+    """
+    Find a list of parameters below at a particular point for a given completed model output task:
+        - antecedent_dry_days
+        - average_rain_intensity
+        - event_duration
+        - rainfall_ph
+
+    Supported methods: GET
+    Required query param values: "scenario_id": str
+
+    Parameters
+    ----------
+    scenario_id: int
+        The scenario ID of the pollution model run
+
+    Returns
+    -------
+    Response
+        Returns JSON response in the form below:
+        {
+            "antecedent_dry_days": int,
+            "average_rain_intensity": int,
+            "event_duration": int,
+            "rainfall_ph": int
+            "created_at": datetime.datetime,
+            "geometry": polygon
+        }
+        representing the values for the given point.
+    """  # noqa: D400
+    # Get medusa rainfall information
+    medusa_rainfall_dictionary = tasks.retrieve_medusa_input_parameters.delay(scenario_id).get()
+
+    # Check if the scenario exists
+    if medusa_rainfall_dictionary is None:
+        return make_response(f"Could not find rainfall scenario {scenario_id}", NOT_FOUND)
+    else:
+        return make_response(jsonify(medusa_rainfall_dictionary), OK)
+
+
 @app.route('/models/<int:model_id>/buildings', methods=["GET"])
 @check_celery_alive
 def retrieve_building_flood_status(model_id: int) -> Response:

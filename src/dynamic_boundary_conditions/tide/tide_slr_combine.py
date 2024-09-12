@@ -16,32 +16,6 @@ from scipy.interpolate import interp1d
 log = logging.getLogger(__name__)
 
 
-def split_slr_measurementname_column(slr_data: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    """
-    Split the 'measurementname' column in the sea level rise data to extract and add additional information.
-
-    Parameters
-    ----------
-    slr_data : gpd.GeoDataFrame
-        A GeoDataFrame containing the sea level rise data.
-
-    Returns
-    -------
-    gpd.GeoDataFrame
-        A GeoDataFrame containing the sea level rise data with additional columns for extracted information:
-        'confidence_level', 'ssp_scenario', and 'add_vlm'.
-    """
-    # Create a copy of the sea level rise data
-    slr_data_split = slr_data.copy()
-    # Extract the 'confidence_level' information from the 'measurementname' column
-    slr_data_split['confidence_level'] = slr_data_split['measurementname'].str.extract(r'(low|medium) confidence')
-    # Extract the 'ssp_scenario' information from the 'measurementname' column
-    slr_data_split['ssp_scenario'] = slr_data_split['measurementname'].str.extract(r'(\w+-\d\.\d)')
-    # Extract for the presence of '+ VLM' in the 'measurementname' column
-    slr_data_split['add_vlm'] = slr_data_split['measurementname'].str.contains(r'\+ VLM')
-    return slr_data_split
-
-
 def get_slr_scenario_data(
         slr_data: gpd.GeoDataFrame,
         confidence_level: str,
@@ -83,15 +57,17 @@ def get_slr_scenario_data(
     """
     log.info("Extracting the requested 'sea_level_rise' scenario data.")
 
-    # Split 'measurementname' column to extract and add additional information
-    slr_data_split = split_slr_measurementname_column(slr_data)
+    # Merge ssp and scenario into one column
+    slr_data['ssp_scenario'] = slr_data['ssp'].astype(str) + '-' + slr_data['scenario'].astype(str)
+    # Remove 'ssp' and 'scenario' column
+    slr_data = slr_data.drop(columns=['ssp', 'scenario'])
 
     # Check if the provided confidence level is valid
-    valid_conf_level = slr_data_split['confidence_level'].unique().tolist()
+    valid_conf_level = slr_data['confidence_level'].unique().tolist()
     if confidence_level not in valid_conf_level:
         raise ValueError(f"Invalid value '{confidence_level}' for confidence_level. Must be one of {valid_conf_level}.")
     # Filter the sea level rise data based on the desired confidence level
-    slr_scenario = slr_data_split[slr_data_split["confidence_level"] == confidence_level]
+    slr_scenario = slr_data[slr_data["confidence_level"] == confidence_level]
 
     # Check if the provided SSP scenario is valid
     valid_ssp_scenario = slr_scenario['ssp_scenario'].unique().tolist()

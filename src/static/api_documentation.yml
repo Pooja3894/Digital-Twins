@@ -48,6 +48,7 @@ paths:
         '503 - Service Unavailable':
           $ref: '#/components/responses/NoCeleryWorkers'
 
+
   "/models/{scenarioId}":
     get:
       summary: Serves the output of a previously run flood model scenario.
@@ -77,6 +78,8 @@ paths:
           $ref: '#/components/responses/ScenarioNotFound'
         '503 - Service Unavailable':
           $ref: '#/components/responses/NoCeleryWorkers'
+
+
 
   "/tasks/{taskId}":
     get:
@@ -123,6 +126,21 @@ paths:
         '503 - Service Unavailable':
           $ref: '#/components/responses/NoCeleryWorkers'
 
+  "/scenarios/medusa/{scenario_id}":
+    get:
+      summary: Finds the depth values and corresponding time values for a particular point for a given model output task.
+      parameters:
+        - $ref: '#/components/parameters/MedusaScenarioInput'
+      responses:
+        '200 - OK':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedusaScenarioID'
+        '404 - Not Found':
+          $ref: '#/components/responses/MedusaScenarioIDNotFound'
+        '503 - Service Unavailable':
+          $ref: '#/components/responses/NoCeleryWorkers'
 
   "/datasets/update":
     post:
@@ -169,6 +187,14 @@ components:
             type: string
             example: Could not find flood model output 17
 
+    MedusaScenarioIDNotFound:
+      description: The scenario with that MedusaScenarioID could not be found
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Could not find rainfall scenario 31
+
     ModelOutput:
       description: The BG-Flood model output NetCDF file for the given scenario.
       content:
@@ -208,8 +234,17 @@ components:
       schema:
         type: integer
       required: true
-      description: ID of the flood scenario to retireve.
+      description: ID of the flood scenario to retrieve.
       example: 17
+
+    MedusaScenarioID:
+      in: path
+      name: MedusaScenarioInput
+      schema:
+        type: integer
+      required: true
+      description: ID of the scenario to retrieve.
+      example: 31
 
     TaskId:
       in: path
@@ -309,6 +344,25 @@ components:
           items:
             type: number
           example: [ 0, 100, 200, 300, 400, 500, 600, 700, 800, 900 ]
+
+    MedusaScenarioInput:
+      type: object
+      properties:
+        antecedent_dry_days:
+          type: number
+          example: 1
+        average_rain_intensity:
+          type: number
+          example: 1
+        event_duration:
+          type: number
+          example: 1
+        rainfall_ph:
+          type: number
+          example: 8
+        geometry:
+          type: string
+          example: "01030000209108000001000000050000000000000020F037410000000026D5534100000000801238410000000026D55341000000008012384100000000CDCE53410000000020F0374100000000CDCE53410000000020F037410000000026D55341"
 
     TaskId:
       type: string

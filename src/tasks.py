@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 """
 Runs backend tasks using Celery. Allowing for multiple long-running tasks to complete in the background.
 Allows the frontend to send tasks and retrieve status later.
 """
 import logging
 import traceback
-from typing import Dict, List, NamedTuple, Tuple
+from typing import Dict, List, NamedTuple, Tuple, Union, Optional
 
 import billiard.einfo
 import geopandas as gpd
@@ -21,6 +20,7 @@ from src.dynamic_boundary_conditions.rainfall import main_rainfall
 from src.dynamic_boundary_conditions.river import main_river
 from src.dynamic_boundary_conditions.tide import main_tide_slr
 from src.flood_model import bg_flood_model, process_hydro_dem
+from src.pollution_model.run_medusa_2 import retrieve_input_parameters
 from src.run_all import DEFAULT_MODULES_TO_PARAMETERS
 
 # Setup celery backend task management
@@ -284,6 +284,32 @@ def get_depth_by_time_at_point(model_id: int, lat: float, lng: float) -> DepthTi
     depths = da.values.tolist()
     times = da.coords['time'].values.tolist()
     return DepthTimePlot(depths, times)
+
+
+@app.task(base=OnFailureStateTask)
+def retrieve_medusa_input_parameters(scenario_id: int) -> Optional[Dict[str, Union[str, float]]]:
+    """
+    Retrieve input parameters for the current scenario id.
+
+    Parameters
+    ----------
+    scenario_id: int
+        The scenario ID of the pollution model run
+
+
+    Returns
+    -------
+    Dict[src, Union[str, float]]
+        A dictionary contain information from Rainfall MEDUSA 2.0 database or None if scenario does not exist.
+    """
+    # Get rainfall information
+    medusa_rainfall_event = retrieve_input_parameters(scenario_id)
+
+    # Return a dictionary format of these parameters or None if no ID found
+    if medusa_rainfall_event is None:
+        return None
+
+    return dict(medusa_rainfall_event)
 
 
 @app.task(base=OnFailureStateTask)

@@ -110,20 +110,17 @@ confidence level, SSP scenario, inclusion of Vertical Land Motion (VLM), percent
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.split_slr_measurementname_column" title="src.dynamic_boundary_conditions.tide.tide_slr_combine.split_slr_measurementname_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_slr_measurementname_column</span></code></a>(→ geopandas.GeoDataFrame)</p></td>
-<td><p>Split the 'measurementname' column in the sea level rise data to extract and add additional information.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.get_slr_scenario_data" title="src.dynamic_boundary_conditions.tide.tide_slr_combine.get_slr_scenario_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_slr_scenario_data</span></code></a>(→ geopandas.GeoDataFrame)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.get_slr_scenario_data" title="src.dynamic_boundary_conditions.tide.tide_slr_combine.get_slr_scenario_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_slr_scenario_data</span></code></a>(→ geopandas.GeoDataFrame)</p></td>
 <td><p>Get sea level rise scenario data based on the specified confidence_level, ssp_scenario, add_vlm, and percentile.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.get_interpolated_slr_scenario_data" title="src.dynamic_boundary_conditions.tide.tide_slr_combine.get_interpolated_slr_scenario_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_interpolated_slr_scenario_data</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.get_interpolated_slr_scenario_data" title="src.dynamic_boundary_conditions.tide.tide_slr_combine.get_interpolated_slr_scenario_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_interpolated_slr_scenario_data</span></code></a>(...)</p></td>
 <td><p>Interpolates sea level rise scenario data based on the specified year interval and interpolation method.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.add_slr_to_tide" title="src.dynamic_boundary_conditions.tide.tide_slr_combine.add_slr_to_tide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_slr_to_tide</span></code></a>(→ pandas.DataFrame)</p></td>
-<td><p>Adds sea level rise (SLR) data to the tide data for a specific projection year and</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.add_slr_to_tide" title="src.dynamic_boundary_conditions.tide.tide_slr_combine.add_slr_to_tide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_slr_to_tide</span></code></a>(→ pandas.DataFrame)</p></td>
+<td><p>Add sea level rise (SLR) data to the tide data for a specific projection year and</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.get_combined_tide_slr_data" title="src.dynamic_boundary_conditions.tide.tide_slr_combine.get_combined_tide_slr_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_combined_tide_slr_data</span></code></a>(→ pandas.DataFrame)</p></td>
-<td><p>Generates the combined tide and sea level rise (SLR) data for a specific projection year, considering the given</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.get_combined_tide_slr_data" title="src.dynamic_boundary_conditions.tide.tide_slr_combine.get_combined_tide_slr_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_combined_tide_slr_data</span></code></a>(→ pandas.DataFrame)</p></td>
+<td><p>Generate the combined tide and sea level rise (SLR) data for a specific projection year, considering the given</p></td>
 </tr>
 </tbody>
 </table>
@@ -134,24 +131,6 @@ confidence level, SSP scenario, inclusion of Vertical Land Motion (VLM), percent
 <dt class="sig sig-object py" id="src.dynamic_boundary_conditions.tide.tide_slr_combine.log">
 <span class="sig-prename descclassname"><span class="pre">src.dynamic_boundary_conditions.tide.tide_slr_combine.</span></span><span class="sig-name descname"><span class="pre">log</span></span><a class="headerlink" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.log" title="Link to this definition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.dynamic_boundary_conditions.tide.tide_slr_combine.split_slr_measurementname_column">
-<span class="sig-prename descclassname"><span class="pre">src.dynamic_boundary_conditions.tide.tide_slr_combine.</span></span><span class="sig-name descname"><span class="pre">split_slr_measurementname_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slr_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.GeoDataFrame</span></span></span><a class="headerlink" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.split_slr_measurementname_column" title="Link to this definition"></a></dt>
-<dd><p>Split the ‘measurementname’ column in the sea level rise data to extract and add additional information.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>slr_data</strong> (<em>gpd.GeoDataFrame</em>) – A GeoDataFrame containing the sea level rise data.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A GeoDataFrame containing the sea level rise data with additional columns for extracted information:
-‘confidence_level’, ‘ssp_scenario’, and ‘add_vlm’.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>gpd.GeoDataFrame</p>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.dynamic_boundary_conditions.tide.tide_slr_combine.get_slr_scenario_data">
@@ -222,8 +201,8 @@ Available methods: ‘linear’, ‘nearest’, ‘nearest-up’, ‘zero’, �
 <dl class="py function">
 <dt class="sig sig-object py" id="src.dynamic_boundary_conditions.tide.tide_slr_combine.add_slr_to_tide">
 <span class="sig-prename descclassname"><span class="pre">src.dynamic_boundary_conditions.tide.tide_slr_combine.</span></span><span class="sig-name descname"><span class="pre">add_slr_to_tide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tide_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.GeoDataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slr_interp_scenario</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.GeoDataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proj_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.DataFrame</span></span></span><a class="headerlink" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.add_slr_to_tide" title="Link to this definition"></a></dt>
-<dd><p>Adds sea level rise (SLR) data to the tide data for a specific projection year and
-returns the combined tide and sea level rise value.</p>
+<dd><p>Add sea level rise (SLR) data to the tide data for a specific projection year and
+return the combined tide and sea level rise value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -238,13 +217,16 @@ returns the combined tide and sea level rise value.</p>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If an invalid ‘proj_year’ value is provided.</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.dynamic_boundary_conditions.tide.tide_slr_combine.get_combined_tide_slr_data">
 <span class="sig-prename descclassname"><span class="pre">src.dynamic_boundary_conditions.tide.tide_slr_combine.</span></span><span class="sig-name descname"><span class="pre">get_combined_tide_slr_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tide_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.GeoDataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slr_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.GeoDataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proj_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssp_scenario</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_vlm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">increment_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.DataFrame</span></span></span><a class="headerlink" href="#src.dynamic_boundary_conditions.tide.tide_slr_combine.get_combined_tide_slr_data" title="Link to this definition"></a></dt>
-<dd><p>Generates the combined tide and sea level rise (SLR) data for a specific projection year, considering the given
+<dd><p>Generate the combined tide and sea level rise (SLR) data for a specific projection year, considering the given
 confidence_level, ssp_scenario, add_vlm, percentile, and more.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

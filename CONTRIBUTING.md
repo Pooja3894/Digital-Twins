@@ -9,9 +9,8 @@ Please provide as much detail as you can about what caused the bug, if you can r
 If you can identify any part of the code it's related to that would also be helpful but not necessary.
 
 
-## Pull Requests
-Unfortunately, until we get a CLA in place for external contributors we are not accepting code contributions from external developers.
-We intend to fix this soon, to track progress on this see [Issue #209](https://github.com/GeospatialResearch/Digital-Twins/issues/209).
+## Contributions
+Please contact us if you would like to contribute to a new feature. For bug fixes we appreciate Pull Requests.
 
 
 ## Feature requests

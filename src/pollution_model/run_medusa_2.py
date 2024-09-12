@@ -9,7 +9,7 @@ DOI of the model paper: https://doi.org/10.3390/w12040969
 import logging
 import math
 from enum import StrEnum
-from typing import NamedTuple
+from typing import NamedTuple, Dict, Union, Optional
 from xml.sax import saxutils
 
 import geopandas as gpd
@@ -19,9 +19,11 @@ from sqlalchemy.sql import text
 from src import geoserver
 from src.config import EnvVariable
 from src.digitaltwin import setup_environment
-from src.digitaltwin.tables import create_table
+from src.digitaltwin.tables import create_table, check_table_exists
+from src.digitaltwin.tables import execute_query
 from src.digitaltwin.utils import get_catchment_area, LogLevel, setup_logging
 from src.pollution_model.pollution_tables import Medusa2ModelOutputBuildings, Medusa2ModelOutputRoads
+from src.pollution_model.pollution_tables import MedusaScenarios
 
 log = logging.getLogger(__name__)
 
@@ -497,6 +499,7 @@ def run_pollution_model_rain_event(engine: Engine,
     all_buildings.to_sql(Medusa2ModelOutputBuildings.__tablename__, engine, if_exists="append", index=True)
     all_roads.to_sql(Medusa2ModelOutputRoads.__tablename__, engine, if_exists="append", index=True)
     log.info("MEDUSA2 pollution model output saved to the database.")
+
     return scenario_id
 
 
@@ -623,9 +626,57 @@ def main(selected_polygon_gdf: gpd.GeoDataFrame,
 
     # Run the pollution model
     scenario_id = run_pollution_model_rain_event(engine, area_of_interest, rainfall_event)
+
     # Ensure pollution model data is being served by geoserver
     serve_pollution_model()
+
+    # Create new table recording users' history
+    create_table(engine, MedusaScenarios)
+    # Record the input parameters used to create the scenario
+    record_scenario_input_query = MedusaScenarios(
+        scenario_id=scenario_id,
+        antecedent_dry_days=antecedent_dry_days,
+        average_rain_intensity=average_rain_intensity,
+        event_duration=event_duration,
+        rainfall_ph=rainfall_ph,
+        geometry=area_of_interest['geometry'].to_wkt().iloc[0]
+    )
+    # Execute the query
+    execute_query(engine, record_scenario_input_query)
+
     return scenario_id
+
+
+def retrieve_input_parameters(scenario_id: int) -> Optional[Dict[str, Union[str, float]]]:
+    """
+    Retrieve input parameters for the current scenario id.
+
+    Parameters
+    ----------
+    scenario_id: int
+        The scenario ID of the pollution model run
+
+
+    Returns
+    -------
+    Dict[str, Union[str, float]]
+        A dictionary with information selected from Rainfall MEDUSA 2.0 database based on scenario ID
+    """
+    # Connect to the database
+    engine = setup_environment.get_database()
+
+    # Check table exists before querying
+    if not check_table_exists(engine, 'medusa_scenarios'):
+        return None
+
+    else:
+        # Set up query command to pull information from medusa_scenarios table
+        query = text(
+            "SELECT * FROM medusa_scenarios WHERE scenario_id = :scenario_id"
+        ).bindparams(scenario_id=scenario_id)
+
+        # Get information by using scenario_id from medusa_scenarios table in the dataset
+        return engine.execute(query).fetchone()
 
 
 if __name__ == "__main__":

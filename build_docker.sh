@@ -14,10 +14,10 @@ docker compose build
 echo "Saving images to fredt.tar"
 docker save -o fredt.tar \
   postgis/postgis:16-3.4 \
-  lparkinson/backend-flood-resilience-dt:1.1 \
-  lparkinson/celery-flood-resilience-dt:1.1 \
-  lparkinson/www-flood-resilience-dt:1.1 \
-  lparkinson/geoserver-flood-resilience-dt:1.1 \
+  lparkinson/backend-flood-resilience-dt:1.2 \
+  lparkinson/celery-flood-resilience-dt:1.2 \
+  lparkinson/www-flood-resilience-dt:1.2 \
+  lparkinson/geoserver-flood-resilience-dt:1.2 \
   redis:7 \
 
 

@@ -14,8 +14,8 @@ from src.dynamic_boundary_conditions.rainfall.rainfall_enum import RainInputType
 from src.dynamic_boundary_conditions.river import main_river
 from src.dynamic_boundary_conditions.river.river_enum import BoundType
 from src.dynamic_boundary_conditions.tide import main_tide_slr
-from src.pollution_model import run_medusa_2
 from src.flood_model import bg_flood_model, process_hydro_dem
+from src.pollution_model import run_medusa_2
 
 
 def main(
