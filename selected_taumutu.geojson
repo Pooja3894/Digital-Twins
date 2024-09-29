@@ -1,0 +1,43 @@
+{
+  "type": "FeatureCollection",
+  "name": "selected_taumutu",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::2193"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1550000.0,
+              5145000.0
+            ],
+            [
+              1547000.0,
+              5145000.0
+            ],
+            [
+              1547000.0,
+              5143000.0
+            ],
+            [
+              1550000.0,
+              5143000.0
+            ],
+            [
+              1550000.0,
+              5145000.0
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

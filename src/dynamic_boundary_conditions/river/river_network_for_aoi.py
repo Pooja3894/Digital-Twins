@@ -435,6 +435,8 @@ def remove_unconnected_edges_from_network(
     for _, data in grouped_data:
         # Find the edge with the largest area within the current catchment
         largest_edge = data[data["is_largest_area"]].squeeze()
+        if isinstance(largest_edge, gpd.GeoDataFrame):
+            largest_edge = largest_edge.iloc[1]
         # Determine the end node of the current catchment based on its direction
         catch_end_node = (
             largest_edge["last_node"] if largest_edge["node_direction"] == "to" else largest_edge["first_node"]
@@ -445,8 +447,11 @@ def remove_unconnected_edges_from_network(
             edge_start_node = edge["first_node"] if edge["node_direction"] == "to" else edge["last_node"]
             # Check if there is a path from the edge's start node to the catchment's end node
             if not nx.has_path(rec_network, edge_start_node, catch_end_node):
-                # If there isn't a path, remove the edge from the REC network
-                rec_network.remove_edge(edge["first_node"], edge["last_node"])
+                if rec_network.has_edge(edge["first_node"], edge["last_node"]):
+                    # If there isn't a path, remove the edge from the REC network
+                    rec_network.remove_edge(edge["first_node"], edge["last_node"])
+                else:
+                    print(edge)
                 # Add the edge's object ID to the list of edges to be removed
                 rec_edges_to_remove.append(edge["objectid"])
     # Filter to remove REC geometries that were excluded

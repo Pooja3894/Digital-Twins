@@ -101,5 +101,5 @@ DEFAULT_MODULES_TO_PARAMETERS = {
 }
 
 if __name__ == '__main__':
-    sample_polygon = gpd.GeoDataFrame.from_file("selected_polygon.geojson")
+    sample_polygon = gpd.GeoDataFrame.from_file("selected_taumutu.geojson")
     main(sample_polygon, DEFAULT_MODULES_TO_PARAMETERS)
