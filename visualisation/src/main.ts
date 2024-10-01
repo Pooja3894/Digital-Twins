@@ -8,6 +8,7 @@ import routes from "@/routes";
 import "bootstrap/dist/css/bootstrap.css";
 import "@/assets/base-style.css";
 import "@/assets/map-page.css";
+import "@/assets/nav-bar.css";
 
 const router = createRouter({
   routes,

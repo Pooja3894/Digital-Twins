@@ -5,8 +5,10 @@
       display: flex;
       flex-direction: row;
       .layers-side-bar {
+        border: solid, 1px;
         display: flex;
         flex-direction: column;
+
         .layers {
           .search-bar {
             display: flex;
@@ -22,6 +24,10 @@
             }
           }
         }
+      }
+      .map-viewer {
+        width: 100%;
+        height: auto;
       }
       .title {
         padding: 10px;
@@ -47,6 +53,7 @@
           margin-left: 20px;
         }
       }
+
       .general-scenario {
         display: flex;
         flex-direction: column;
@@ -55,18 +62,41 @@
         .header {
           border: solid 1px;
         }
-        .generate-icon {
-          width: 100px;
-          h3 {
-            font-weight: 100;
-            font-size: 15px;
-            height: 50px;
-            text-align: center;
-            border: 1px solid black;
-            border-radius: 10px;
-            background: rgb(169, 242, 182);
-            padding: 5px;
+        .icon-column {
+          display: flex;
+          .generate-icon {
+            width: 100px;
+            h3 {
+              font-weight: 100;
+              font-size: 15px;
+              height: 50px;
+              text-align: center;
+              border: 1px solid black;
+              border-radius: 10px;
+              background: rgb(169, 242, 182);
+              padding: 5px;
+            }
           }
+        }
+      }
+      .another-modelling {
+        border-radius: 5px;
+        background-color: #c4bebe;
+        border-bottom: 1px solid black;
+        .image {
+          transform: rotate(-0.25turn);
+          opacity: 0.5;
+          z-index: -1;
+          img {
+            transform: rotate(-0.25turn);
+            opacity: 0.5;
+            z-index: -1;
+          }
+        }
+        :hover {
+          background-color: #a83030;
+        }
+        .model-title {
         }
       }
     }

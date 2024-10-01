@@ -1,7 +1,10 @@
 <template>
   <!-- Navigation Bar to allow switching between different pages in the app -->
   <div class="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="nav-bar-bcg-image">
+      <img src="@/assets/kowhaiwhai.png" />
+    </div>
+    <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <router-link class="navbar-brand" :to="{ name: 'Map' }">
           Ōtākaro Digital Twin

@@ -66,28 +66,33 @@
                 />
               </label>
             </div>
-            <div class="generate-icon">
-              <h3>Generate Scenerio</h3>
+            <div class="icon-column">
+              <div class="generate-icon">
+                <h3>Generate Scenerio</h3>
+              </div>
             </div>
           </div>
+          <div class="another-modelling">
+            <div class="model-title">Another Modelling</div>
+          </div>
+          <div class="another-modelling">
+            <div class="model-title">Another Modelling</div>
+          </div>
         </div>
-        <MapViewer
-          :init-lat="otakaro.latitude"
-          :init-long="otakaro.longitude"
-          :init-height="8000"
-          :cesium-access-token="env.cesiumApiToken"
-          :data-sources="dataSources"
-          :scenarios="scenarios"
-          :scenario-options="selectedParameters"
-          @task-posted="onTaskPosted"
-          @task-completed="onTaskCompleted"
-          @task-failed="onTaskFailed"
-        />
-        <img
-          id="legend"
-          alt="Legend graphic showing how colour relates to depth"
-          src="@/assets/viridis_legend.png"
-        />
+        <div class="map-viewer">
+          <MapViewer
+            :init-lat="otakaro.latitude"
+            :init-long="otakaro.longitude"
+            :init-height="8000"
+            :cesium-access-token="env.cesiumApiToken"
+            :data-sources="dataSources"
+            :scenarios="scenarios"
+            :scenario-options="selectedParameters"
+            @task-posted="onTaskPosted"
+            @task-completed="onTaskCompleted"
+            @task-failed="onTaskFailed"
+          />
+        </div>
       </div>
     </div>
   </div>

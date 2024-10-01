@@ -1,5 +1,17 @@
 .nav-bar {
+  background-color: red;
+  img {
+    opacity: 0.08;
+    z-index: -1;
+    width: 100%;
+  }
   .container-fluid {
-    background-color: red;
+    margin: 0 20px 0 20px;
+    z-index: 1;
+    .navbar-nav {
+      :hover {
+        background-color: #a83030;
+      }
+    }
   }
 }
