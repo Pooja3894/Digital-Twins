@@ -20,7 +20,7 @@ from __init__ import __version__
 # -- Project information -----------------------------------------------------
 
 project = 'Flood Resilience Digital Twin (FReDT)'
-copyright = '2023, Geospatial Research Institute Toi Hangarau'
+copyright = '2021-2024, Geospatial Research Institute Toi Hangarau'
 author = 'Geospatial Research Institute Toi Hangarau'
 
 # The full version, including alpha/beta/rc tags

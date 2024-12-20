@@ -1,3 +1,6 @@
+# Copyright © 2023-2024 Geospatial Research Institute Toi Hangarau
+# LICENSE: https://github.com/GeospatialResearch/Digital-Twins/blob/master/LICENSE
+
 import unittest
 
 import numpy as np

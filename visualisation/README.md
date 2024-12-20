@@ -1,3 +1,7 @@
+Copyright © 2021-2024 Geospatial Research Institute Toi Hangarau
+
+[LICENSE](https://github.com/GeospatialResearch/Digital-Twins/blob/master/LICENSE)
+
 ## Getting Started
 
 ### Requirements
