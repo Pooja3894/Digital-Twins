@@ -54,6 +54,12 @@ Blank fields to fill in include things like the `POSTGRES_PASSWORD` variable and
 1. Monitor progress by checking the logs using `docker compose logs -f celery_worker`.
 1. The API is available by default on <http://localhost:5000>. Visit <https://geospatialresearch.github.io/Digital-Twins/api> for API documentation.
 
+## Contributing
+If you are interested in contributing to this project, please see [our contributing page here](CONTRIBUTING.md). 
+
+## Support
+If you run into an issue, bug, or need help with the software, please consider opening an issue or discussion, this will be the best way to reach us.
+
 
 ## Setup for FReDT project software developers
 [Visit our wiki](https://github.com/GeospatialResearch/Digital-Twins/wiki/) for some instructions on how to set up your development machine to work with on the FReDT project.
