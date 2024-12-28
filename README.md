@@ -39,7 +39,9 @@ Create API keys for each of these services. You may need to create an account an
 1. Create a file called `api_keys.env`, copy the contents of `api_keys.env.template` and fill in the blank values with API credentials from the above links.
    
 1. Create a file called `.env` in the project root, copy the contents of `.env.template` and fill in all blank fields unless a comment says you can leave it blank.
-Blank fields to fill in include things like the `POSTGRES_PASSWORD` variable and `CESIUM_ACCESS_TOKEN`. You may configure other variables as needed.
+Blank fields to fill in include fields such as `CESIUM_ACCESS_TOKEN` and `POSTGRES_PASSWORD`. `POSTGRES_PASSWORD` can be a password of your choosing. You may modify other configuration variables if needed to suit particular deployment environemnts.
+
+   _Note: If you modify the geoserver admin password (important for public deployments) you must also update the password manually in the Geoserver interface. See https://docs.geoserver.org/main/en/user/security/webadmin/ugr.html#edit-user-group-service._
     
 1. From project root, run the command `docker compose up -d` to run the database, backend web servers, and helper services.
    
